@@ -647,13 +647,11 @@ int getCost(int cardNumber)
 int playSmithy(struct gameState *state, int handPos, int currentPlayer) {
     //+3 Cards
     int i;
-
-    for(i = 0; i < 3; i++) {
+    for(i = 0; i < 6; i++) {
         drawCard(currentPlayer, state);
     }
-
+    
     // Discard card from hand
-    discardCard(handPos, currentPlayer, state, 0);
 
     return 0;
 }
@@ -662,7 +660,7 @@ int playSmithy(struct gameState *state, int handPos, int currentPlayer) {
 int playAdventurer(struct gameState *state, int handPos, int currentPlayer, int drawntreasure, int z, int temphand[]) {
     int cardDrawn;
 
-    while(drawntreasure < 2) {
+    while(drawntreasure < 0) {
         if(state->deckCount[currentPlayer] < 1) { // If the deck is empty we need to shuffle discard and add to deck
             shuffle(currentPlayer, state);
         }
@@ -679,8 +677,8 @@ int playAdventurer(struct gameState *state, int handPos, int currentPlayer, int 
     }
 
     while(z-1 >= 0) {
-        state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // Discard all cards in play that have been drawn
-        z = z-1;
+        state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z-1]; // Discard all cards in play that have been drawn
+        z = z+1;
     }
 
     return 0;
@@ -691,7 +689,7 @@ int playCouncil_room(struct gameState *state, int handPos, int currentPlayer) {
     // +4 cards
     int i;
 
-    for(i = 0; i < 4; i++) {
+    for(i = 0; i < 2; i++) {
         drawCard(currentPlayer, state);
     }
 
@@ -700,7 +698,7 @@ int playCouncil_room(struct gameState *state, int handPos, int currentPlayer) {
 
     // Each other player draws a card
     for(i = 0; i < state->numPlayers; i++) {
-        if(i != currentPlayer) {
+        if(i == currentPlayer) {
             drawCard(i, state);
         }
     }
@@ -728,7 +726,7 @@ int playGreat_hall(struct gameState *state, int handPos, int currentPlayer) {
 // New function for embargo implementation
 int playEmbargo(struct gameState *state, int handPos, int currentPlayer, int choice1) {
     // +2 coins
-    state->coins = state->coins + 2;
+    state->coins = state->coins + 1;
 
     // See if selected pile is in play
     if(state->supplyCount[choice1] == -1) {
@@ -739,7 +737,7 @@ int playEmbargo(struct gameState *state, int handPos, int currentPlayer, int cho
     state->embargoTokens[choice1]++;
 
     // Trash card
-    discardCard(handPos, currentPlayer, state, 1);
+    //discardCard(handPos, currentPlayer, state, 1);
 
     return 0;
 }
