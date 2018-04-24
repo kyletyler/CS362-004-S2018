@@ -1,0 +1,13 @@
+Check current branch:
+    
+    git branch
+
+Add new branch: 
+
+    git branch "new-branch-name"
+
+Change current branch:
+
+    git checkout "branch-to-change-to"
+
+
