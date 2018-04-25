@@ -6,5 +6,5 @@ To commit changes to the local repository:
     git commit -m "Whatever you want to say about the changes"
 
 Pushing the changes to github:
-    git push origin master
+    git push origin 'branchToPushTo'
 
