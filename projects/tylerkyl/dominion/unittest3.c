@@ -2,8 +2,6 @@
 
 // supplyCount() description: returns the supply count of a specific card
 
-// Testing goals: fill hand with certain amount of card, check that correct num are returned
-
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
@@ -12,56 +10,41 @@
 #include "dominion_helpers.h"
 
 int main() {
-    int seed = 1000;
-    int numPlayers = 2;
-    int maxBonus = 10;
-    int r, handCount;
-    int bonus;
-    int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
+    int cardsReturned, i;
     struct gameState G;
-    int maxHandCount = 5;
+    int startingCurse = 10;
+    int startingDuchy = 0;
+    int startingGold = 9;
 
-    // Arrays of all coppers, silvers, and golds
-    int coppers[MAX_HAND];
-    int silvers[MAX_HAND];
-    int golds[MAX_HAND];
+    // Set starting supply values
+    G.supplyCount[curse] = startingCurse;
+    G.supplyCount[duchy] = startingDuchy;
+    G.supplyCount[gold] = startingGold;
 
-    int i;
-    for(i = 0; i < MAX_HAND; i++) {
-        coppers[i] = copper;
-        silvers[i] = silver;
-        golds[i] = gold;
-    }
-
-    printf("TESTING updateCoins():\n");
+    printf("TESTING supplyCount():\n");
     
-    int p;
-    for(p = 0; p < numPlayers; p++) {
+    // Testing function for different values
+    for(i = 0; i <= startingCurse; i++) {
         
-        for(handCount = 1; handCount <= maxHandCount; handCount++) {
+        // Curse test
+        cardsReturned = supplyCount(curse, &G);
+        printf("CURSE: cardsReturned = %d, expected = %d\n", cardsReturned, startingCurse - i );
+        assert(cardsReturned == startingCurse - i); // check if the number of cards returned is correct
+        G.supplyCount[curse]--;
 
-            for (bonus = 0; bonus <= maxBonus; bonus++) {
-                
-                printf("Test player %d with %d treasure card(s) and %d bonus.\n", p, handCount, bonus);
-                memset(&G, 23, sizeof(struct gameState));   // clear the game state
-                r = initializeGame(numPlayers, k, seed, &G); // initialize a new game
-                G.handCount[p] = handCount;                 // set the number of cards on hand
-                memcpy(G.hand[p], coppers, sizeof(int) * handCount); // set all the cards to copper
-                updateCoins(p, &G, bonus);
-                printf("G.coins = %d, expected = %d\n", G.coins, handCount * 1 + bonus);
-                assert(G.coins == handCount * 1 + bonus); // check if the number of coins is correct
+        // Duchy test
+        cardsReturned = supplyCount(duchy, &G);
+        printf("DUCHY: cardsReturned = %d, expected = %d\n", cardsReturned, startingDuchy + i );
+        assert(cardsReturned == startingDuchy + i); // check if the number of cards returned is correct
+        G.supplyCount[duchy]++;
 
-                memcpy(G.hand[p], silvers, sizeof(int) * handCount); // set all the cards to silver
-                updateCoins(p, &G, bonus);
-                printf("G.coins = %d, expected = %d\n", G.coins, handCount * 2 + bonus);
-                assert(G.coins == handCount * 2 + bonus); // check if the number of coins is correct
+        // Gold test
+        cardsReturned = supplyCount(gold, &G);
+        printf("GOLD: cardsReturned = %d, expected = %d\n", cardsReturned, startingGold - i );
+        assert(cardsReturned == startingGold - i); // check if the number of cards returned is correct
+        G.supplyCount[gold]--;
 
-                memcpy(G.hand[p], golds, sizeof(int) * handCount); // set all the cards to gold
-                updateCoins(p, &G, bonus);
-                printf("G.coins = %d, expected = %d\n", G.coins, handCount * 3 + bonus);
-                assert(G.coins == handCount * 3 + bonus); // check if the number of coins is correct
-            }                                                      
-        }
+        printf("\n");
     }
 
     printf("All tests passed!\n");
