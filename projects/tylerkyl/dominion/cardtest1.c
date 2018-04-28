@@ -57,8 +57,13 @@ int main() {
 
     newCards = 3;
     printf("hand count = %d, expected = %d\n", test_G.handCount[thisPlayer], G.handCount[thisPlayer]+ newCards - discarded);
-    //assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded);
-    
+    //assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded); 
+    if(test_G.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded) 
+        printf("smithy test: PASS\n");
+    else
+        printf("smithy test: FAIL\n");
+
+
     ///////////////////////////////////////////////////////////
     // TEST 2: Cards recieved are from current player's pile //
     ///////////////////////////////////////////////////////////
@@ -69,6 +74,10 @@ int main() {
     
     printf("deck count = %d, expected = %d\n", test_G.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards + shuffledCards);
    // assert(test_G.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
+    if(test_G.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards) 
+        printf("smithy test: PASS\n");
+    else
+        printf("smithy test: FAIL\n");
 
     ///////////////////////////////////////////////
     // TEST 3: No state change for other players //
@@ -83,6 +92,13 @@ int main() {
     printf("otherPlayer handCount = %d, expected = %d\n", test_G.handCount[otherPlayer], G.handCount[otherPlayer]);
     printf("otherPlayer deckCount = %d, expected = %d\n", test_G.deckCount[otherPlayer], G.deckCount[otherPlayer]);
     printf("otherPlayer discardCount = %d, expected = %d\n", test_G.discardCount[otherPlayer], G.discardCount[otherPlayer]);
+    
+    if(test_G.handCount[otherPlayer] == G.handCount[otherPlayer] &&
+       test_G.deckCount[otherPlayer] == G.deckCount[otherPlayer] &&
+       test_G.discardCount[otherPlayer] == G.discardCount[otherPlayer])
+        printf("smithy test: PASS\n");
+    else
+        printf("smithy test: FAIL\n");
 /*
     if(test_G.handCount[otherPlayer] == G.handCount[otherPlayer] &&
        test_G.deckCount[otherPlayer] == G.deckCount[otherPlayer] &&
@@ -108,10 +124,21 @@ int main() {
     printf("estate count = %d, expected = %d\n", test_G.supplyCount[estate], G.supplyCount[estate]);
     printf("duchy count = %d, expected = %d\n", test_G.supplyCount[duchy], G.supplyCount[duchy]);
     printf("province count = %d, expected = %d\n", test_G.supplyCount[province], G.supplyCount[province]);
-     
+    
+    if(test_G.supplyCount[estate] == G.supplyCount[estate] &&
+       test_G.supplyCount[duchy] == G.supplyCount[duchy] &&
+       test_G.supplyCount[province] ==  G.supplyCount[province])
+        printf("smithy test: PASS\n");
+    else
+        printf("smithy test: FAIL\n");
+
     // Checking changes to kingdom card piles
     for(i = 0; i < 10; i++)  {
         printf("kingdom card %d count = %d, expected = %d\n", i, k[i], test_k[i]);
+        if(k[i] == test_k[i])
+            printf("smithy test: PASS\n");
+        else
+            printf("smithy test: FAIL\n");
     }
 
     return 0;

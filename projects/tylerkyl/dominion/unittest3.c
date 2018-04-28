@@ -21,7 +21,7 @@ int main() {
     G.supplyCount[duchy] = startingDuchy;
     G.supplyCount[gold] = startingGold;
 
-    printf("TESTING supplyCount():\n");
+    printf("----------TESTING supplyCount():----------\n");
     
     // Testing function for different values
     for(i = 0; i <= startingCurse; i++) {
@@ -29,25 +29,38 @@ int main() {
         // Curse test
         cardsReturned = supplyCount(curse, &G);
         printf("CURSE: cardsReturned = %d, expected = %d\n", cardsReturned, startingCurse - i );
-        assert(cardsReturned == startingCurse - i); // check if the number of cards returned is correct
+        //assert(cardsReturned == startingCurse - i); // check if the number of cards returned is correct
+        if(cardsReturned == startingCurse - i)
+            printf("supplyCount() test: PASS\n");
+        else
+            printf("supplyCount() test: FAIL\n");
+
         G.supplyCount[curse]--;
 
         // Duchy test
         cardsReturned = supplyCount(duchy, &G);
         printf("DUCHY: cardsReturned = %d, expected = %d\n", cardsReturned, startingDuchy + i );
-        assert(cardsReturned == startingDuchy + i); // check if the number of cards returned is correct
+        //assert(cardsReturned == startingDuchy + i); // check if the number of cards returned is correct
+        if(cardsReturned == startingDuchy + i)
+            printf("supplyCount() test: PASS\n");
+        else
+            printf("supplyCount() test: FAIL\n");
+        
         G.supplyCount[duchy]++;
 
         // Gold test
         cardsReturned = supplyCount(gold, &G);
         printf("GOLD: cardsReturned = %d, expected = %d\n", cardsReturned, startingGold - i );
-        assert(cardsReturned == startingGold - i); // check if the number of cards returned is correct
+        //assert(cardsReturned == startingGold - i); // check if the number of cards returned is correct
+        if(cardsReturned == startingGold - i)
+            printf("supplyCount() test: PASS\n");
+        else
+            printf("supplyCount() test: FAIL\n");
+        
         G.supplyCount[gold]--;
 
         printf("\n");
     }
-
-    printf("All tests passed!\n");
 
     return 0;
 }

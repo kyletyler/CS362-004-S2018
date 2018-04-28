@@ -29,7 +29,7 @@ int main() {
         golds[i] = gold;
     }
 
-    printf("TESTING updateCoins():\n");
+    printf("----------TESTING updateCoins():----------\n");
     
     int p;
     for(p = 0; p < numPlayers; p++) {
@@ -45,22 +45,32 @@ int main() {
                 memcpy(G.hand[p], coppers, sizeof(int) * handCount); // set all the cards to copper
                 updateCoins(p, &G, bonus);
                 printf("G.coins = %d, expected = %d\n", G.coins, handCount * 1 + bonus);
-                assert(G.coins == handCount * 1 + bonus); // check if the number of coins is correct
+                //assert(G.coins == handCount * 1 + bonus); // check if the number of coins is correct
+                if(G.coins == handCount * 1 + bonus)
+                    printf("updateCoins() test: PASS\n");
+                else
+                    printf("updateCoins() test: FAIL\n");
 
                 memcpy(G.hand[p], silvers, sizeof(int) * handCount); // set all the cards to silver
                 updateCoins(p, &G, bonus);
                 printf("G.coins = %d, expected = %d\n", G.coins, handCount * 2 + bonus);
-                assert(G.coins == handCount * 2 + bonus); // check if the number of coins is correct
+                //assert(G.coins == handCount * 2 + bonus); // check if the number of coins is correct
+                if(G.coins == handCount * 2 + bonus)
+                    printf("updateCoins() test: PASS\n");
+                else
+                    printf("updateCoins() test: FAIL\n");
 
                 memcpy(G.hand[p], golds, sizeof(int) * handCount); // set all the cards to gold
                 updateCoins(p, &G, bonus);
                 printf("G.coins = %d, expected = %d\n", G.coins, handCount * 3 + bonus);
-                assert(G.coins == handCount * 3 + bonus); // check if the number of coins is correct
+                //assert(G.coins == handCount * 3 + bonus); // check if the number of coins is correct
+                if(G.coins == handCount * 3 + bonus)
+                    printf("updateCoins() test: PASS\n");
+                else
+                    printf("updateCoins() test: FAIL\n");
             }                                                      
         }
     }
-
-    printf("All tests passed!\n");
 
     return 0;
 }

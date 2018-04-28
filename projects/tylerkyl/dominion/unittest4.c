@@ -22,19 +22,27 @@ int main() {
         G.supplyCount[i]++;
     }
 
-    printf("TESTING isGameOver():\n\n");
+    printf("----------TESTING isGameOver():----------\n\n");
     
     // Testing game over by provinces
     printf("Testing provinces:\n");
     printf("Num Provinces = %d\n", G.supplyCount[province]);  
     printf("isGameOver = %d, expected = 0\n", isGameOver(&G));
-    assert(isGameOver(&G) == 0); // Check if game is over
-    
+    //assert(isGameOver(&G) == 0); // Check if game is over
+    if(isGameOver(&G) == 0) 
+        printf("isGameOver() test: PASS\n");
+    else
+        printf("isGameOver() test: FAIL\n");
+
     G.supplyCount[province]--; // Remove the province card
 
     printf("Num Provinces = %d\n", G.supplyCount[province]);  
     printf("isGameOver = %d, expected = 1\n", isGameOver(&G));
-    assert(isGameOver(&G) == 1); // Check if game is over
+   //assert(isGameOver(&G) == 1); // Check if game is over
+    if(isGameOver(&G) == 1) 
+        printf("isGameOver() test: PASS\n");
+    else
+        printf("isGameOver() test: FAIL\n");
 
     G.supplyCount[province]++;
 
@@ -46,7 +54,11 @@ int main() {
     }
 
     printf("isGameOver = %d, expected = 0\n", isGameOver(&G));
-    assert(isGameOver(&G) == 0); // Check if game is over
+    //assert(isGameOver(&G) == 0); // Check if game is over
+    if(isGameOver(&G) == 0) 
+        printf("isGameOver() test: PASS\n");
+    else
+        printf("isGameOver() test: FAIL\n");
    
     // Remove 2 cards
     printf("Removing 2 cards...\n");
@@ -58,7 +70,11 @@ int main() {
     }
 
     printf("isGameOver = %d, expected = 0\n", isGameOver(&G));
-    assert(isGameOver(&G) == 0); // Check if game is over
+    //assert(isGameOver(&G) == 0); // Check if game is over
+    if(isGameOver(&G) == 0) 
+        printf("isGameOver() test: PASS\n");
+    else
+        printf("isGameOver() test: FAIL\n");
 
     // Remove 1 card
     printf("Removing 1 card...\n");
@@ -69,7 +85,11 @@ int main() {
     }
 
     printf("isGameOver = %d, expected = 1\n", isGameOver(&G));
-    assert(isGameOver(&G) == 1); // Check if game is over
+    //assert(isGameOver(&G) == 1); // Check if game is over
+    if(isGameOver(&G) == 1) 
+        printf("isGameOver() test: PASS\n");
+    else
+        printf("isGameOver() test: FAIL\n");
    
     // Remove 1 card
     printf("Removing 1 card...\n");
@@ -80,7 +100,11 @@ int main() {
     }
 
     printf("isGameOver = %d, expected = 1\n", isGameOver(&G));
-    assert(isGameOver(&G) == 1); // Check if game is over
+    //assert(isGameOver(&G) == 1); // Check if game is over
+    if(isGameOver(&G) == 1) 
+        printf("isGameOver() test: PASS\n");
+    else
+        printf("isGameOver() test: FAIL\n");
     
     printf("All tests passed!\n");
 

@@ -24,7 +24,7 @@ int main() {
         coppers[i] = copper;
     }
 
-    printf("TESTING handCard():\n");
+    printf("----------TESTING handCard():----------\n");
 
     // Testing function for each player
     for(p = 0; p < numPlayers; p++) {
@@ -38,13 +38,16 @@ int main() {
                 cardReturned = handCard(handPos, &G);
             //    printf("p = %d, handCount = %d, handPos = %d\n", p, handCount, handPos);
                 printf("cardReturned = %d, expected = %d\n", cardReturned, copper);
-                assert(cardReturned == copper);// Check that the card expected is returned
+                //assert(cardReturned == copper);// Check that the card expected is returned
+                if(cardReturned == copper)
+                    printf("handCard() test: PASS\n");
+                else
+                    printf("handCard() test: FAIL\n");
             }
             printf("\n");
         }
     }
 
-    printf("All tests passed!\n");
 
     return 0;
 }
