@@ -50,6 +50,16 @@ unittest4: unittest4.c dominion.o rngs.o
 cardtest1: cardtest1.c dominion.o rngs.o 
 	gcc -o cardtest1 -g cardtest1.c dominion.o rngs.o $(CFLAGS)
 
+unittestresults.out: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c dominion.o rngs.o
+	echo "Result for running unit tests:" >> tests.out
+	
+	echo 
+	gcc -o unittest1 -g unittest1.c dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest2 -g unittest2.c dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest3 -g unittest3.c dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest4 -g unittest4.c dominion.o rngs.o $(CFLAGS)
+	gcc -o cardtest1 -g cardtest1.c dominion.o rngs.o $(CFLAGS)
+	
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 cardtest1
