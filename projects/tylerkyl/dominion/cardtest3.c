@@ -20,7 +20,6 @@
 #include "rngs.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include <stdlib.h>
 
 #define TESTCARD "village"

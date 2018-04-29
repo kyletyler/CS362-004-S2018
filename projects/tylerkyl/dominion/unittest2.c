@@ -4,7 +4,6 @@
  * Description: returns the card in a specific position of the hand
  */
 
-#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include "rngs.h"
@@ -38,7 +37,6 @@ int main() {
                 cardReturned = handCard(handPos, &G);
             //    printf("p = %d, handCount = %d, handPos = %d\n", p, handCount, handPos);
                 printf("cardReturned = %d, expected = %d\n", cardReturned, copper);
-                //assert(cardReturned == copper);// Check that the card expected is returned
                 if(cardReturned == copper)
                     printf("handCard() test: PASS\n");
                 else

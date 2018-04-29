@@ -21,7 +21,6 @@
 #include "rngs.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
 #include <stdlib.h>
 
 #define TESTCARD "smithy"
@@ -55,7 +54,6 @@ int main() {
 
     newCards = 3;
     printf("hand count = %d, expected = %d\n", test_G.handCount[thisPlayer], G.handCount[thisPlayer]+ newCards - discarded);
-    //assert(testG.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded); 
     if(test_G.handCount[thisPlayer] == G.handCount[thisPlayer] + newCards - discarded) 
         printf("smithy test: PASS\n");
     else
@@ -69,9 +67,8 @@ int main() {
     // Copy the game state to the test game state
     memcpy(&test_G, &G, sizeof(struct gameState));
     cardEffect(smithy, choice1, choice2, choice3, &test_G, handPos, &bonus);
-    
+
     printf("deck count = %d, expected = %d\n", test_G.deckCount[thisPlayer], G.deckCount[thisPlayer] - newCards + shuffledCards);
-   // assert(test_G.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards);
     if(test_G.deckCount[thisPlayer] == G.deckCount[thisPlayer] - newCards + shuffledCards) 
         printf("smithy test: PASS\n");
     else

@@ -1,6 +1,5 @@
 // Unit test for dominion.c function updateCoins()
 
-#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include "rngs.h"
@@ -45,7 +44,6 @@ int main() {
                 memcpy(G.hand[p], coppers, sizeof(int) * handCount); // set all the cards to copper
                 updateCoins(p, &G, bonus);
                 printf("G.coins = %d, expected = %d\t", G.coins, handCount * 1 + bonus);
-                //assert(G.coins == handCount * 1 + bonus); // check if the number of coins is correct
                 if(G.coins == handCount * 1 + bonus)
                     printf("updateCoins() test: PASS\n");
                 else
@@ -54,7 +52,6 @@ int main() {
                 memcpy(G.hand[p], silvers, sizeof(int) * handCount); // set all the cards to silver
                 updateCoins(p, &G, bonus);
                 printf("G.coins = %d, expected = %d\t", G.coins, handCount * 2 + bonus);
-                //assert(G.coins == handCount * 2 + bonus); // check if the number of coins is correct
                 if(G.coins == handCount * 2 + bonus)
                     printf("updateCoins() test: PASS\n");
                 else
@@ -63,7 +60,6 @@ int main() {
                 memcpy(G.hand[p], golds, sizeof(int) * handCount); // set all the cards to gold
                 updateCoins(p, &G, bonus);
                 printf("G.coins = %d, expected = %d\t", G.coins, handCount * 3 + bonus);
-                //assert(G.coins == handCount * 3 + bonus); // check if the number of coins is correct
                 if(G.coins == handCount * 3 + bonus)
                     printf("updateCoins() test: PASS\n");
                 else

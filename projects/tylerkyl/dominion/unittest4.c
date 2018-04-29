@@ -6,7 +6,6 @@
 // There are 25 supply piles
 // provinces are in position 3
 
-#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include "rngs.h"
@@ -28,7 +27,6 @@ int main() {
     printf("Testing provinces:\n");
     printf("Num Provinces = %d\n", G.supplyCount[province]);  
     printf("isGameOver = %d, expected = 0\n", isGameOver(&G));
-    //assert(isGameOver(&G) == 0); // Check if game is over
     if(isGameOver(&G) == 0) 
         printf("isGameOver() test: PASS\n");
     else
@@ -38,7 +36,6 @@ int main() {
 
     printf("Num Provinces = %d\n", G.supplyCount[province]);  
     printf("isGameOver = %d, expected = 1\n", isGameOver(&G));
-   //assert(isGameOver(&G) == 1); // Check if game is over
     if(isGameOver(&G) == 1) 
         printf("isGameOver() test: PASS\n");
     else
@@ -54,7 +51,6 @@ int main() {
     }
 
     printf("isGameOver = %d, expected = 0\n", isGameOver(&G));
-    //assert(isGameOver(&G) == 0); // Check if game is over
     if(isGameOver(&G) == 0) 
         printf("isGameOver() test: PASS\n");
     else
@@ -70,7 +66,6 @@ int main() {
     }
 
     printf("isGameOver = %d, expected = 0\n", isGameOver(&G));
-    //assert(isGameOver(&G) == 0); // Check if game is over
     if(isGameOver(&G) == 0) 
         printf("isGameOver() test: PASS\n");
     else
@@ -85,7 +80,6 @@ int main() {
     }
 
     printf("isGameOver = %d, expected = 1\n", isGameOver(&G));
-    //assert(isGameOver(&G) == 1); // Check if game is over
     if(isGameOver(&G) == 1) 
         printf("isGameOver() test: PASS\n");
     else
@@ -100,13 +94,10 @@ int main() {
     }
 
     printf("isGameOver = %d, expected = 1\n", isGameOver(&G));
-    //assert(isGameOver(&G) == 1); // Check if game is over
     if(isGameOver(&G) == 1) 
         printf("isGameOver() test: PASS\n");
     else
         printf("isGameOver() test: FAIL\n");
-    
-    printf("All tests passed!\n");
 
     return 0;
 }

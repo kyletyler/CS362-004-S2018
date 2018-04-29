@@ -2,7 +2,6 @@
 
 // supplyCount() description: returns the supply count of a specific card
 
-#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include "rngs.h"
@@ -29,7 +28,6 @@ int main() {
         // Curse test
         cardsReturned = supplyCount(curse, &G);
         printf("CURSE: cardsReturned = %d, expected = %d\n", cardsReturned, startingCurse - i );
-        //assert(cardsReturned == startingCurse - i); // check if the number of cards returned is correct
         if(cardsReturned == startingCurse - i)
             printf("supplyCount() test: PASS\n");
         else
@@ -40,7 +38,6 @@ int main() {
         // Duchy test
         cardsReturned = supplyCount(duchy, &G);
         printf("DUCHY: cardsReturned = %d, expected = %d\n", cardsReturned, startingDuchy + i );
-        //assert(cardsReturned == startingDuchy + i); // check if the number of cards returned is correct
         if(cardsReturned == startingDuchy + i)
             printf("supplyCount() test: PASS\n");
         else
@@ -51,7 +48,6 @@ int main() {
         // Gold test
         cardsReturned = supplyCount(gold, &G);
         printf("GOLD: cardsReturned = %d, expected = %d\n", cardsReturned, startingGold - i );
-        //assert(cardsReturned == startingGold - i); // check if the number of cards returned is correct
         if(cardsReturned == startingGold - i)
             printf("supplyCount() test: PASS\n");
         else
